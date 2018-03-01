@@ -133,7 +133,8 @@ with tf.Graph().as_default():
             """
             feed_dict = {
               cnn.input_x: x_batch,
-              cnn.input_y: y_batch
+              cnn.input_y: y_batch,
+              cnn.dropout_keep_prob: 0.5
             }
             _, step, summaries, loss, accuracy = sess.run(
                 [train_op, global_step, train_summary_op, cnn.loss, cnn.accuracy],
@@ -148,7 +149,8 @@ with tf.Graph().as_default():
             """
             feed_dict = {
               cnn.input_x: x_batch,
-              cnn.input_y: y_batch
+              cnn.input_y: y_batch,
+              cnn.dropout_keep_prob: 1.0
             }
             step, summaries, loss, accuracy = sess.run(
                 [global_step, dev_summary_op, cnn.loss, cnn.accuracy],
